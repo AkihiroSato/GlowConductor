@@ -36,7 +36,7 @@ namespace MyParticles{
 
 		virtual ~TouchParticle(){}
 
-		bool init(){ return initWithTotalParticles(500); }
+		bool init(){ return initWithTotalParticles(100); }
 		virtual bool initWithTotalParticles(int numberOfParticles);
 
 	private:

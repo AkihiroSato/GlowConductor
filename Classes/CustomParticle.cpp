@@ -169,8 +169,8 @@ namespace MyParticles
 			setStartRadius(0);
 			setStartRadiusVar(0);
 			setEndRadius(100);
-			setEndRadiusVar(0);
-			setRotatePerSecond(1000);
+			setEndRadiusVar(20);
+			setRotatePerSecond(0);
 			setRotatePerSecondVar(0);
 
 			// angle
@@ -181,6 +181,12 @@ namespace MyParticles
 			cocos2d::Size winSize = Director::getInstance()->getWinSize();
 			this->setPosition(Point(winSize.width / 2, winSize.height / 2));
 			setPosVar(Point::ZERO);
+
+			// パーティクルの回転
+			_startSpin = 100.0f;
+			_startSpinVar = 100.0f;
+			_endSpin = 720.0f;
+			_endSpinVar = 100.0f;
 
 			// パーティクルの生存時間
 			_life = 0.5f;
@@ -208,8 +214,8 @@ namespace MyParticles
 			_endColor.g = 1.0f;
 			_endColor.b = 0.0f;
 			_endColor.a = 0.0f;
-			_endColorVar.r = 0.2f;
-			_endColorVar.g = 0.2f;
+			_endColorVar.r = 0.5f;
+			_endColorVar.g = 0.5f;
 			_endColorVar.b = 0.0f;
 			_endColorVar.a = 0.0f;
 

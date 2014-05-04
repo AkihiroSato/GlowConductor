@@ -6,6 +6,7 @@
 #include "CTouchUp.h"
 #include "SCameraTargetMgr.h"
 #include "CustomParticle.h"
+#include "ObjectAI.h"
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -53,6 +54,8 @@ CObject* ObjectFactory::CreateObject(	int objectType,
 	if (objectType == eDark) object = CreateDark(radian, x, y, ai);
 	if (objectType == eTouchUp) object = CreateTouchUp(radian, x, y, ai);
 
+
+	// 今のシーンにオブジェクトを追加する
 	currentNode->addChild(object);
 
 	return object;
@@ -124,7 +127,6 @@ CObject* ObjectFactory::AutoCraeteObject(Point targetPoint)
 		sObjectData l_objectData = *((*_dataIt).second);	// 起点ポイントを足すためのコピーオブジェクト
 		l_objectData._x += _basePointX;					// 起点ポイント分足す
 		object = CreateObject(&l_objectData);
-		log("%d", (int)(*_dataIt).first);
 
 		// 次のオブジェクトデータを指す
 		_dataIt++;
@@ -178,13 +180,13 @@ void ObjectFactory::InitObjectData()
 			getline(s, kari, ',');
 			objType = atoi(kari.c_str());
 			getline(s, kari, ',');
-			r = stof(kari.c_str());
+			r = static_cast<float>(atoi(kari.c_str()));
 			getline(s, kari, ',');
-			x = stof(kari.c_str());
+			x = static_cast<float>(atoi(kari.c_str()));
 			getline(s, kari, ',');
-			y = stof(kari.c_str());
+			y = static_cast<float>(atoi(kari.c_str()));
 			getline(s, kari, ',');
-			a = atoi(kari.c_str());
+			a = static_cast<float>(atoi(kari.c_str()));
 
 			// 取得したステージ番号マップにオブジェクト情報を入れる
 			AddObjectData(new sObjectData(objType, r, x, y, nullptr), stage);

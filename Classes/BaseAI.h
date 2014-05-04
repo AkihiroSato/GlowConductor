@@ -1,11 +1,9 @@
-#ifndef __BASE_AI__
-#define __BASE_AI__
+#pragma once
+
+#include "cocos2d.h"
 
 class BaseAI
 {
 public:
-	virtual void AI() = 0;
+	virtual void AI(cocos2d::Node* pObject) = 0;
 };
-
-
-#endif

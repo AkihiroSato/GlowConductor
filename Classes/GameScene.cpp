@@ -12,7 +12,7 @@
 #include "SCameraTargetMgr.h"
 #include "CustomParticle.h"
 #include "GameLayer.h"
-#include "PlayerFollower.h"
+#include "CustomPointEffect.h"
 
 USING_NS_CC;
 
@@ -128,9 +128,18 @@ bool GameScene::onTouchBegan(Touch* touch, Event* unused_event)
 
 	// タッチのパーティクルを表示
 	ParticleSystemQuad* particle = MyParticles::TouchParticle::create();
+	particle->setTexture(Director::getInstance()->getTextureCache()->addImage("rectangle.png"));
 	particle->setPosition(touch->getLocation() + hosei);
-
 	_pGameLayer->addChild(particle);
+
+	// タッチの円を表示
+	Sprite* pTouchCircle = Sprite::create("particle_normal_ring.png");
+	pTouchCircle->setScale(0.01f);
+	pTouchCircle->runAction(Sequence::createWithTwoActions(
+		Spawn::createWithTwoActions(ScaleTo::create(0.5f, 1.0f), FadeOut::create(0.5f)),
+		RemoveSelf::create()));
+	pTouchCircle->setPosition(touch->getLocation() + hosei);
+	_pGameLayer->addChild(pTouchCircle);
 
 	return true;
 }
@@ -149,12 +158,6 @@ void GameScene::update(float time)
 	pPlayer->Move();
 	pPlayer->UpdateScore();
 	pPlayer->UpdateTapRemain();
-
-	//// プレイヤーに追従する残影を表示させる
-	//PlayerFollower* pFollower = PlayerFollower::createWithTexture(pPlayer->getTexture());
-	//pFollower->setPosition(pPlayer->getPosition());
-	//pFollower->setScale(pPlayer->getScale());
-	//_pGameLayer->addChild(pFollower);
 
 	// プレイヤーの位置によってオブジェクトを自動生成
 	CObject* obj = objFactory->AutoCraeteObject(TargetPointer->getPosition());

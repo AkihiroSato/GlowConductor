@@ -96,6 +96,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 // タッチ開始時
 bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 {
-	log("Touch Start");
 	return true;
 }
