@@ -19,6 +19,7 @@ CPlayer::CPlayer()
 	_remainTap = TOUCH_REMAIN_INIT;
 	_hitDeleteFlag = false;
 	_killFlag = false;
+	pAi = nullptr;
 
 	// ÉXÉRÉAÇÃê›íË
 	_score = 0;

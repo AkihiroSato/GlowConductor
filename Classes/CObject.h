@@ -18,12 +18,13 @@ public:
 		this->setPosition(cocos2d::Point(x, y));
 		this->setScale(_radius / BALL_RADIUS);
 	}
+	virtual ~CObject();
 
 	// 衝突時に実行される関数
 	virtual void CollisionFunction(IPlayerStateChange* playerStateChanger){}
 
 	// オブジェクトの更新処理
-	virtual void Update(){}
+	virtual void update(float delta){}
 
 	// 半径取得
 	float GetRadius(){ return _radius; }

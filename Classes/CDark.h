@@ -10,8 +10,8 @@ public:
 	CDark(float radius, float x, float y);
 	virtual ~CDark();
 
-	// 移動アルゴリズム
-	void Update(){}
+	// 更新処理
+	void update(float delta);
 
 	// 衝突時に実行される関数
 	void CollisionFunction(IPlayerStateChange* playerStateChanger);

@@ -58,6 +58,9 @@ CObject* ObjectFactory::CreateObject(	int objectType,
 	// 今のシーンにオブジェクトを追加する
 	currentNode->addChild(object);
 
+	// 更新処理をそれぞれに行わせる
+	object->scheduleUpdate();
+
 	return object;
 }
 
@@ -67,7 +70,7 @@ CObject* ObjectFactory::CreateObject(sObjectData* objectData)
 						objectData->_radius,
 						objectData->_x,
 						objectData->_y,
-						objectData->_ai);
+						new AI_UpDown());
 }
 
 //****************************************************************

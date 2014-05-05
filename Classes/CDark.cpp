@@ -2,6 +2,7 @@
 #include "CalclateMcr.h"
 #include "CPlayer.h"
 #include "CustomParticle.h"
+#include "ObjectAI.h"
 
 USING_NS_CC;
 
@@ -42,4 +43,10 @@ CDark* CDark::createWithTexture(Texture2D *texture)
 	}
 	CC_SAFE_DELETE(sprite);
 	return nullptr;
+}
+
+// XVˆ—
+void CDark::update(float dalta)
+{
+	pAi->AI(this);
 }
